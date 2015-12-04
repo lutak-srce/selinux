@@ -8,7 +8,7 @@ class selinux::disable::centos {
     enable => false,
   }
   exec{'disable_selinux_sysconfig':
-    command => 'sed -i "s@^\(SELINUX=\).*@\1disabled@" /etc/sysconfig/selinux && sed -i "s@^\(SELINUX=\).*@\1disabled@" /etc/selinux/config',
-    unless  => 'grep -q "SELINUX=disabled" /etc/selinux/config && grep -q "SELINUX=disabled" /etc/sysconfig/selinux',
+    command => '/bin/sed -i "s@^\(SELINUX=\).*@\1disabled@" /etc/sysconfig/selinux && /bin/sed -i "s@^\(SELINUX=\).*@\1disabled@" /etc/selinux/config',
+    unless  => '/bin/grep -q "SELINUX=disabled" /etc/selinux/config && /bin/grep -q "SELINUX=disabled" /etc/sysconfig/selinux',
   }
 }
