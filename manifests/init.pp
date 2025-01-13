@@ -12,7 +12,7 @@
 # the Free Software Foundation.
 #
 class selinux {
-  case $::operatingsystem {
+  case $facts['os']['name'] {
     default: {}
     centos: { include selinux::centos }
   }
